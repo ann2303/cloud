@@ -1,0 +1,51 @@
+version: '2'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  minio:
+    image: 'bitnami/minio:latest'
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    environment:
+      - MINIO_ROOT_USER=minio-root-user
+      - MINIO_ROOT_PASSWORD=minio-root-password
+    networks:
+      - app-tier
+    deploy:
+      resources:
+        limits:
+          memory: 10M
+    volumes:
+      - type: tmpfs
+        target: /data
+        tmpfs:
+          size: 15M
+
+  app:
+    build:
+          context: ./client
+          dockerfile: Dockerfile
+    depends_on:
+      - minio
+    networks:
+      - app-tier
+    environment:
+      - MINIO_HOST=minio
+      - MINIO_PORT=9000
+      - MINIO_ACCESS_KEY=minio-root-user
+      - MINIO_SECRET_KEY=minio-root-password
+    volumes:
+      - ./client:/app/
+    command: python /app/client.py
+
+volumes:
+  minio_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./minio_data
+      o: bind
