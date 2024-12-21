@@ -1,48 +1,66 @@
-version: '2'
-
-networks:
-  app-tier:
-    driver: bridge
-
 services:
-  minio:
-    image: 'bitnami/minio:latest'
-    ports:
-      - '9000:9000'
-      - '9001:9001'
-    env_file:
-      - minio.env
-    networks:
-      - app-tier
-    deploy:
-      resources:
-        limits:
-          memory: 10M
-    volumes:
-      - type: tmpfs
-        target: /data
-        tmpfs:
-          size: 15M
+    minio:
+      image: 'bitnami/minio:latest'
+      ports:
+        - '9000:9000'
+        - '9001:9001'
+      # deploy:
+      #   resources:
+      #     limits:
+      #       memory: 10M
+      environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+      healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+        interval: 15s
+        timeout: 10s
+        retries: 3
+      # volumes:
+      #   - type: tmpfs
+      #     target: /data
+      #     tmpfs:
+      #       size: 15M
 
-  app:
-    build:
-          context: ./client
-          dockerfile: Dockerfile
-    depends_on:
-      - minio
-    networks:
-      - app-tier
-    env_file:
-      - minio.env
-    volumes:
-      - ./client:/app/
-    command: python /app/client.py
+    minio-client:
+        image: 'bitnami/minio-client'
+        environment:
+        - MINIO_HOST=minio
+        - MINIO_PORT=9000
+        - ALIAS=${ALIAS}
+        - MINIO_ACCESS_KEY=${MINIO_ACCESS_KEY}
+        - MINIO_SECRET_KEY=${MINIO_SECRET_KEY}
+        - USER=${USER}
+        - PASSWORD=${PASSWORD}
+        command: sh /mc_client/mc_runc.sh      
+        depends_on:
+          minio:
+            condition: service_healthy
+        volumes:
+        - ./mc_client:/mc_client
+    app:
+      build:
+            context: ./client
+            dockerfile: Dockerfile
+      environment:
+      - MINIO_HOST=minio
+      - MINIO_PORT=9000
+      - MINIO_ACCESS_KEY=${USER}
+      - MINIO_SECRET_KEY=${PASSWORD}
+      depends_on:
+        minio:
+          condition: service_healthy
+        minio-client:
+          condition: service_completed_successfully
+      volumes:
+        - ./client:/app/
+      command: python /app/client.py
 
 volumes:
-  minio_data:
-      driver: local
-      driver_opts:
-        type: none
-        o: bind
-        device: ./minio_data
+    minio_data:
+        driver: local
+        driver_opts:
+          type: none
+          o: bind
+          device: ./minio_data
   

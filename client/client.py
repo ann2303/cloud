@@ -2,11 +2,15 @@ from minio import Minio
 import time
 from pathlib import Path
 import os
+import sys
+import logging
+logging.basicConfig(handlers=[logging.StreamHandler(sys.stdout)], level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def main():
     # Initialize MinIO client
+    logging.info("Starting data transfer to MinIO...")
     minio_client = Minio(
-        "localhost:9000",
+        f"{os.getenv('MINIO_HOST')}:{os.getenv('MINIO_PORT')}",
         access_key=os.getenv("MINIO_ACCESS_KEY"),
         secret_key=os.getenv("MINIO_SECRET_KEY"),
         secure=False
@@ -32,7 +36,7 @@ def main():
                 image_path,
                 content_type="image/jpeg"
             )
-            print(f"Uploaded {filename}")
+            logging.info(f"Uploaded {filename}")
             
             counter += 1
             time.sleep(1)  # Wait 1 second between uploads
