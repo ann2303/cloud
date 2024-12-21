@@ -16,6 +16,8 @@
 
 (или ./storage_limit_test.sh, работает примерно 2 минуты)
 
+В ./storage_limit_proof/test_logs будет находиться вывод
+
 
 2) Превышение квоты
 
@@ -25,3 +27,5 @@
 ```docker compose --env-file ./quota_limit_proof/.env up```
 
 (или ./storage_limit_test.sh, работает примерно 4 минуты)
+
+В ./quota_limit_proof/test_logs будет находиться вывод
