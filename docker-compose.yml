@@ -4,10 +4,6 @@ services:
       ports:
         - '9000:9000'
         - '9001:9001'
-      # deploy:
-      #   resources:
-      #     limits:
-      #       memory: 10M
       environment:
       - MINIO_ROOT_USER=${MINIO_ROOT_USER}
       - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
@@ -16,11 +12,8 @@ services:
         interval: 15s
         timeout: 10s
         retries: 3
-      # volumes:
-      #   - type: tmpfs
-      #     target: /data
-      #     tmpfs:
-      #       size: 15M
+      tmpfs:
+        - /bitnami/minio/data:rw,size=${STORAGE_SIZE}
 
     minio-client:
         image: 'bitnami/minio-client'
@@ -32,6 +25,8 @@ services:
         - MINIO_SECRET_KEY=${MINIO_SECRET_KEY}
         - USER=${USER}
         - PASSWORD=${PASSWORD}
+        - BUCKET=${BUCKET}
+        - QUOTA=${QUOTA}
         command: sh /mc_client/mc_runc.sh      
         depends_on:
           minio:
@@ -47,6 +42,8 @@ services:
       - MINIO_PORT=9000
       - MINIO_ACCESS_KEY=${USER}
       - MINIO_SECRET_KEY=${PASSWORD}
+      - STORAGE_SIZE=${STORAGE_SIZE}
+      - QUOTA=${QUOTA}
       depends_on:
         minio:
           condition: service_healthy
@@ -55,12 +52,4 @@ services:
       volumes:
         - ./client:/app/
       command: python /app/client.py
-
-volumes:
-    minio_data:
-        driver: local
-        driver_opts:
-          type: none
-          o: bind
-          device: ./minio_data
-  
+      

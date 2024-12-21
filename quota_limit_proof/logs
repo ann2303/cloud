@@ -1,0 +1,74 @@
+Attaching to app-1, minio-1, minio-client-1
+minio-1         | 
+minio-client-1  | 
+minio-client-1  | Added `ann` successfully.
+minio-client-1  | Added user `ann` successfully.
+minio-client-1  | Bucket created successfully `ann/images`.
+minio-client-1  | Successfully set bucket quota of 4.8 MiB on `images`
+minio-client-1  | Attached Policies: [readwrite]
+minio-client-1  | To User: ann
+[Kminio-client-1 exited with code 0
+app-1           | 2024-12-21 20:32:03,015 - INFO - Starting data transfer to MinIO...
+app-1           | 2024-12-21 20:32:03,030 - INFO - Image size: 99163 bytes
+app-1           | 2024-12-21 20:32:03,030 - INFO - Storage limited count: 85
+app-1           | 2024-12-21 20:32:03,030 - INFO - Quota limited count: 53
+app-1           | 2024-12-21 20:32:03,033 - INFO - Uploaded image_0.jpg
+app-1           | 2024-12-21 20:32:03,141 - INFO - Uploaded image_1.jpg
+app-1           | 2024-12-21 20:32:03,248 - INFO - Uploaded image_2.jpg
+app-1           | 2024-12-21 20:32:03,353 - INFO - Uploaded image_3.jpg
+app-1           | 2024-12-21 20:32:03,458 - INFO - Uploaded image_4.jpg
+app-1           | 2024-12-21 20:32:03,562 - INFO - Uploaded image_5.jpg
+app-1           | 2024-12-21 20:32:03,665 - INFO - Uploaded image_6.jpg
+app-1           | 2024-12-21 20:32:03,769 - INFO - Uploaded image_7.jpg
+app-1           | 2024-12-21 20:32:03,874 - INFO - Uploaded image_8.jpg
+app-1           | 2024-12-21 20:32:03,978 - INFO - Uploaded image_9.jpg
+app-1           | 2024-12-21 20:32:04,089 - INFO - Uploaded image_10.jpg
+app-1           | 2024-12-21 20:32:04,195 - INFO - Uploaded image_11.jpg
+app-1           | 2024-12-21 20:32:04,301 - INFO - Uploaded image_12.jpg
+app-1           | 2024-12-21 20:32:04,404 - INFO - Uploaded image_13.jpg
+app-1           | 2024-12-21 20:32:04,511 - INFO - Uploaded image_14.jpg
+app-1           | 2024-12-21 20:32:04,617 - INFO - Uploaded image_15.jpg
+app-1           | 2024-12-21 20:32:04,727 - INFO - Uploaded image_16.jpg
+app-1           | 2024-12-21 20:32:04,832 - INFO - Uploaded image_17.jpg
+app-1           | 2024-12-21 20:32:04,937 - INFO - Uploaded image_18.jpg
+app-1           | 2024-12-21 20:32:05,042 - INFO - Uploaded image_19.jpg
+app-1           | 2024-12-21 20:32:05,149 - INFO - Uploaded image_20.jpg
+app-1           | 2024-12-21 20:32:05,253 - INFO - Uploaded image_21.jpg
+app-1           | 2024-12-21 20:32:05,358 - INFO - Uploaded image_22.jpg
+app-1           | 2024-12-21 20:32:05,462 - INFO - Uploaded image_23.jpg
+app-1           | 2024-12-21 20:32:05,565 - INFO - Uploaded image_24.jpg
+app-1           | 2024-12-21 20:32:05,669 - INFO - Uploaded image_25.jpg
+app-1           | 2024-12-21 20:32:05,775 - INFO - Uploaded image_26.jpg
+app-1           | 2024-12-21 20:32:05,879 - INFO - Uploaded image_27.jpg
+app-1           | 2024-12-21 20:32:05,987 - INFO - Uploaded image_28.jpg
+app-1           | 2024-12-21 20:32:06,099 - INFO - Uploaded image_29.jpg
+app-1           | 2024-12-21 20:32:06,211 - INFO - Uploaded image_30.jpg
+app-1           | 2024-12-21 20:32:06,332 - INFO - Uploaded image_31.jpg
+app-1           | 2024-12-21 20:32:06,442 - INFO - Uploaded image_32.jpg
+app-1           | 2024-12-21 20:32:06,557 - INFO - Uploaded image_3Gracefully stopping... (press Ctrl+C again to force)
+ Container cloud-app-1  Stopping
+ Container cloud-app-1  Stopped
+ Container cloud-minio-client-1  Stopping
+ Container cloud-minio-client-1  Stopped
+ Container cloud-minio-1  Stopping
+ Container cloud-minio-1  Stopped
+canceled
+oaded image_37.jpg
+app-1           | 2024-12-21 20:32:07,097 - INFO - Uploaded image_38.jpg
+app-1           | 2024-12-21 20:32:07,201 - INFO - Uploaded image_39.jpg
+app-1           | 2024-12-21 20:32:07,305 - INFO - Uploaded image_40.jpg
+app-1           | 2024-12-21 20:32:07,413 - INFO - Uploaded image_41.jpg
+app-1           | 2024-12-21 20:32:07,522 - INFO - Uploaded image_42.jpg
+app-1           | 2024-12-21 20:32:07,629 - INFO - Uploaded image_43.jpg
+app-1           | 2024-12-21 20:32:07,739 - INFO - Uploaded image_44.jpg
+app-1           | 2024-12-21 20:32:07,844 - INFO - Uploaded image_45.jpg
+app-1           | 2024-12-21 20:32:07,954 - INFO - Uploaded image_46.jpg
+app-1           | 2024-12-21 20:32:08,059 - INFO - Uploaded image_47.jpg
+app-1           | 2024-12-21 20:32:08,166 - INFO - Uploaded image_48.jpg
+app-1           | 2024-12-21 20:32:08,275 - INFO - Uploaded image_49.jpg
+app-1           | 2024-12-21 20:32:08,384 - INFO - Uploaded image_50.jpg
+app-1           | 2024-12-21 20:32:08,488 - INFO - Uploaded image_51.jpg
+app-1           | 2024-12-21 20:32:08,592 - INFO - Uploaded image_52.jpg
+app-1           | 2024-12-21 20:32:08,693 - INFO - Quota limit reached. Waiting for 2 minutes...
+app-1           | Upload error: S3 operation failed; code: XMinioAdminBucketQuotaExceeded, message: Bucket quota exceeded, resource: /images/image_53.jpg, request_id: 18134B7550775E13, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: images, object_name: image_53.jpg
+[Kapp-1 exited with code 0

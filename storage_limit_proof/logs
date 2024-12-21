@@ -1,0 +1,67 @@
+Attaching to app-1, minio-1, minio-client-1
+minio-1         | 
+minio-client-1  | 
+minio-client-1  | Added `ann` successfully.
+minio-client-1  | Added user `ann` successfully.
+minio-client-1  | Bucket created successfully `ann/images`.
+minio-client-1  | Successfully set bucket quota of 4.8 MiB on `images`
+minio-client-1  | Attached Policies: [readwrite]
+minio-client-1  | To User: ann
+[Kminio-client-1 exited with code 0
+app-1           | 2024-12-21 20:30:34,055 - INFO - Starting data transfer to MinIO...
+app-1           | 2024-12-21 20:30:34,061 - INFO - Image size: 99163 bytes
+app-1           | 2024-12-21 20:30:34,061 - INFO - Storage limited count: 43
+app-1           | 2024-12-21 20:30:34,061 - INFO - Quota limited count: 53
+app-1           | 2024-12-21 20:30:34,064 - INFO - Uploaded image_0.jpg
+app-1           | 2024-12-21 20:30:34,179 - INFO - Uploaded image_1.jpg
+app-1           | 2024-12-21 20:30:34,292 - INFO - Uploaded image_2.jpg
+app-1           | 2024-12-21 20:30:34,397 - INFO - Uploaded image_3.jpg
+app-1           | 2024-12-21 20:30:34,520 - INFO - Uploaded image_4.jpg
+app-1           | 2024-12-21 20:30:34,625 - INFO - Uploaded image_5.jpg
+app-1           | 2024-12-21 20:30:34,730 - INFO - Uploaded image_6.jpg
+app-1           | 2024-12-21 20:30:34,834 - INFO - Uploaded image_7.jpg
+app-1           | 2024-12-21 20:30:34,937 - INFO - Uploaded image_8.jpg
+app-1           | 2024-12-21 20:30:35,041 - INFO - Uploaded image_9.jpg
+app-1           | 2024-12-21 20:30:35,145 - INFO - Uploaded image_10.jpg
+app-1           | 2024-12-21 20:30:35,251 - INFO - Uploaded image_11.jpg
+app-1           | 2024-12-21 20:30:35,358 - INFO - Uploaded image_12.jpg
+app-1           | 2024-12-21 20:30:35,467 - INFO - Uploaded image_13.jpg
+app-1           | 2024-12-21 20:30:35,570 - INFO - Uploaded image_14.jpg
+app-1           | 2024-12-21 20:30:35,677 - INFO - Uploaded image_15.jpg
+app-1           | 2024-12-21 20:30:35,781 - INFO - Uploaded image_16.jpg
+app-1           | 2024-12-21 20:30:35,887 - INFO - Uploaded image_17.jpg
+app-1           | 2024-12-21 20:30:35,995 - INFO - Uploaded image_18.jpg
+app-1           | 2024-12-21 20:30:36,099 - INFO - Uploaded image_19.jpg
+app-1           | 2024-12-21 20:30:36,203 - INFO - Uploaded image_20.jpg
+app-1           | 2024-12-21 20:30:36,306 - INFO - Uploaded image_21.jpg
+app-1           | 2024-12-21 20:30:36,409 - INFO - Uploaded image_22.jpg
+app-1           | 2024-12-21 20:30:36,517 - INFO - Uploaded image_23.jpg
+app-1           | 2024-12-21 20:30:36,621 - INFO - Uploaded image_24.jpg
+app-1           | 2024-12-21 20:30:36,724 - INFO - Uploaded image_25.jpg
+app-1           | 2024-12-21 20:30:36,828 - INFO - Uploaded image_26.jpg
+app-1           | 2024-12-21 20:30:36,932 - INFO - Uploaded image_27.jpg
+app-1           | 2024-12-21 20:30:37,035 - INFO - Uploaded image_28.jpg
+app-1           | 2024-12-21 20:30:37,142 - INFO - Uploaded image_29.jpg
+app-1           | 2024-12-21 20:30:37,248 - INFO - Uploaded image_30.jpg
+app-1           | 2024-12-21 20:30:37,353 - INFO - Uploaded image_31.jpg
+app-1           | 2024-1minio-1         | 
+minio-1         | API: PutObject(bucket=images, object=image_40.jpg)
+minio-1         | Time: 20:30:38 UTC 12/21/2024
+minio-1         | DeploymentID: 91714cbc-49d0-405e-83fa-7b0c433fd776
+minio-1         | RequestID: 18134B4454BC940E
+minio-1         | RemoteHost: 192.168.80.3
+minio-1         | Host: minio:9000
+minio-1         | UserAgent: MinIO (Linux; x86_64) minio-py/7.2.13
+minio-1         | Error: drive:/bitnami/minio/data, srcVolume: .minio.sys/tmp, srcPath: c2763f4e-e952-4009-92aa-729062cfd687, dstVolume: images:, dstPath: image_40.app-1           | Upload error: S3 operation failed; code: XMinioStorageFull, message: Storage backend has reached its minimum free drive threshold. Please delete a few objects to proceed., resource: /images/image_40.jpg, request_id: 18134B4454BC940E, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: images, object_name: image_40.jpg
+[Kapp-1 exited with code 0
+3: cmd/xl-storage.go:2847:cmd.(*xlStorage).RenameData()
+minio-1         |        2: cmd/xl-storage-disk-id-check.go:501:cmd.(*xlStorageDiskIDCheck).RenameData.func2()
+minio-1         |        1: internal/ioutil/ioutil.go:116:ioutil.WithDeadline[...].func1()
+Gracefully stopping... (press Ctrl+C again to force)
+ Container cloud-app-1  Stopping
+ Container cloud-app-1  Stopped
+ Container cloud-minio-client-1  Stopping
+ Container cloud-minio-client-1  Stopped
+ Container cloud-minio-1  Stopping
+ Container cloud-minio-1  Stopped
+canceled
