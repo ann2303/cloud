@@ -10,9 +10,8 @@ services:
     ports:
       - '9000:9000'
       - '9001:9001'
-    environment:
-      - MINIO_ROOT_USER=minio-root-user
-      - MINIO_ROOT_PASSWORD=minio-root-password
+    env_file:
+      - minio.env
     networks:
       - app-tier
     deploy:
@@ -33,19 +32,17 @@ services:
       - minio
     networks:
       - app-tier
-    environment:
-      - MINIO_HOST=minio
-      - MINIO_PORT=9000
-      - MINIO_ACCESS_KEY=minio-root-user
-      - MINIO_SECRET_KEY=minio-root-password
+    env_file:
+      - minio.env
     volumes:
       - ./client:/app/
     command: python /app/client.py
 
 volumes:
   minio_data:
-    driver: local
-    driver_opts:
-      type: none
-      device: ./minio_data
-      o: bind
+      driver: local
+      driver_opts:
+        type: none
+        o: bind
+        device: ./minio_data
+  
